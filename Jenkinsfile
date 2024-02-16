@@ -39,5 +39,14 @@ pipeline {
                }
             }
         }
+        stage('Quality Gate Status Check : Sonarqube'){
+            steps{
+               script{
+                   
+                   def SonarQubecredentialsId = 'sonartoken'
+                   QualityGateStatus(SonarQubecredentialsId)
+               }
+            }
+        }
     }
 }
