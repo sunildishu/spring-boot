@@ -66,5 +66,16 @@ pipeline {
              }
           }
        }
+        stage('Docker Image Scan: trivy') {
+           steps {
+              script {
+            // Define the Docker image to be scanned
+                  def imageName = "${registry}"
+            
+            // Execute Trivy scan on the Docker image
+                  sh "trivy image ${imageName}"
+            }
+          }
+       }
     }
 }
