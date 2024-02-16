@@ -30,5 +30,14 @@ pipeline {
                 }
             }
         }
+        stage('Static code analysis: Sonarqube'){
+            steps{
+               script{
+                   
+                   def SonarQubecredentialsId = 'sonar-token'
+                   statiCodeAnalysis(SonarQubecredentialsId)
+               }
+            }
+        }
     }
 }
