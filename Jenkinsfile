@@ -2,6 +2,9 @@
 
 pipeline {
     agent any
+    environment {
+        registry = "785236889276.dkr.ecr.ap-south-1.amazonaws.com/testecr"
+    }
 
     stages {
         stage('Git Checkout') {
