@@ -82,9 +82,9 @@ pipeline {
                dockerImagePush()
                }
             }
-        stage('K8S Deploy') {
-    steps {
-        script {
+      stage('K8S Deploy') {
+         steps {
+          script {
             withKubeConfig([credentialsId: 'kubecred', serverUrl: '']) {
                 def yamlFiles = sh(returnStdout: true, script: "ls /kubernatemanifest/*.yaml").trim()
                 if (yamlFiles) {
@@ -94,6 +94,8 @@ pipeline {
                 }
             }
         }
+    }
+}
     }
 }
     
