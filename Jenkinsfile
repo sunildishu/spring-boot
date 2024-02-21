@@ -88,7 +88,7 @@ pipeline {
             withKubeConfig([credentialsId: 'kubecred', serverUrl: '']) {
                 def yamlFiles = sh(returnStdout: true, script: "ls /kubernatemanifest/*.yaml").trim()
                 if (yamlFiles) {
-                    sh 'kubectl apply -f /kubernatemanifest/*.yaml'
+                    sh 'kubectl apply -f ./kubernatemanifest/*.yaml'
                 } else {
                     echo "No YAML files found in /kubernatemanifest/"
                 }
