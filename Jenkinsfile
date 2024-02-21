@@ -86,7 +86,7 @@ pipeline {
         steps{   
             script {
                 withKubeConfig([credentialsId: 'kubecred', serverUrl: '']) {
-                sh ('kubectl apply -f  /kubernatemanifest/*.yaml')
+                sh ('kubectl apply -f  /kubernatemanifest/')
                 }
             }
         }
