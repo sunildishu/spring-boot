@@ -83,13 +83,17 @@ pipeline {
                }
             }
         stage('K8S Deploy') {
-        steps{   
-            script {
-                withKubeConfig([credentialsId: 'kubecred', serverUrl: '']) {
-                sh ('kubectl apply -f  /kubernatemanifest/')
+    steps {
+        script {
+            withKubeConfig([credentialsId: 'kubecred', serverUrl: '']) {
+                def yamlFiles = sh(returnStdout: true, script: "ls /kubernatemanifest/*.yaml").trim()
+                if (yamlFiles) {
+                    sh 'kubectl apply -f /kubernatemanifest/*.yaml'
+                } else {
+                    echo "No YAML files found in /kubernatemanifest/"
                 }
             }
         }
-       }
     }
 }
+    
