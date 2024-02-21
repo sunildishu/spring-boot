@@ -1,0 +1,20 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: springbootapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springbootapp
+  template:
+    metadata:
+      labels:
+        app: springbootapp
+    spec:
+      containers:
+        - name: springbootapp
+          image: 670855725719.dkr.ecr.ap-south-1.amazonaws.com/junkinsrepo:latest
+          ports:
+          - containerPort: 80
+
