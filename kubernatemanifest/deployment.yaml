@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springbootapp
-          image: 670855725719.dkr.ecr.ap-south-1.amazonaws.com/junkinsrepo:latest
+          image: 785236889276.dkr.ecr.ap-south-1.amazonaws.com/ecr3-ecr:latest
           ports:
           - containerPort: 80
 
